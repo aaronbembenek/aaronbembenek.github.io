@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,8 +14,10 @@
   <title>Aaron Bembenek</title>
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+    integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+    integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
@@ -28,23 +31,28 @@
 
   <style>
     .jumbotron {
-        background-color: whitesmoke;
+      background-color: whitesmoke;
     }
+
     dd {
-        margin-bottom: 1em;
+      margin-bottom: 1em;
     }
+
     img.rounded-corners {
       border-radius: 15px;
     }
   </style>
 </head>
+
 <body>
 
   <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-75144545-1', 'auto');
     ga('send', 'pageview');
@@ -63,19 +71,26 @@
     </div>
     <div class="row">
       <div class="col-md-2">
-    <img src="images/abembenek_200x240.jpg" width="150" height="180" alt="Aaron Bembenek" class="rounded-corners">
+        <img src="images/abembenek_2024.jpg" width="150" height="161" alt="Aaron Bembenek" class="rounded-corners"
+          style='border:1px solid #808080'>
       </div>
       <div class="col-md-10">
         <div class="hidden-lg hidden-md">&nbsp;</div>
-    <p>
-    I am a computer science postdoc at the University of Melbourne supervised by <a href="https://people.eng.unimelb.edu.au/tobym/">Toby Murray</a>, working on <a href="https://catch-muri.org/">Cybersecurity Assurance for Teams of Computers and Humans</a>, a project combining computer security, formal methods, and machine learning (among other dimensions).
-    </p>
-    <p>
-    I earned a PhD in computer science at Harvard University, where I was advised by <a href="http://people.seas.harvard.edu/~chong/"> Stephen Chong</a> and was a member of the <a href="http://pl.seas.harvard.edu/">programming languages group</a>.
-    My PhD research focused on combining logic programming and constraint solving, with applications to program analysis and synthesis.
-    </p>
-    <p>I have an undergraduate degree in classics from Princeton University.
-      I enjoy reading and spending time outdoors.</p>
+        <p>
+          I am a computer science postdoc at the University of Melbourne supervised by <a
+            href="https://people.eng.unimelb.edu.au/tobym/">Toby Murray</a>, working on <a
+            href="https://catch-muri.org/">Cybersecurity Assurance for Teams of Computers and Humans</a>, a project
+          combining computer security, formal methods, and machine learning (among other dimensions).
+        </p>
+        <p>
+          I earned a PhD in computer science at Harvard University, where I was advised by <a
+            href="http://people.seas.harvard.edu/~chong/"> Stephen Chong</a> and was a member of the <a
+            href="http://pl.seas.harvard.edu/">programming languages group</a>.
+          My PhD research focused on combining logic programming and constraint solving, with applications to program
+          analysis and synthesis.
+        </p>
+        <p>I have an undergraduate degree in classics from Princeton University.
+          I enjoy reading and spending time outdoors.</p>
       </div>
     </div>
 
@@ -84,14 +99,22 @@
     </div>
 
     <dl>
+      <dt>Combining Datalog and SAT-Based Solving in Code-Reasoning Tools</dt>
+      <dd>
+        Aaron Bembenek<br>
+        PhD dissertation (Harvard University, 2023)<br>
+        <a href="https://dash.harvard.edu/handle/1/37378073">site</a>
+        &#x274A; <a href="papers/dissertation.bib">bib</a>
+      </dd>
+
       <dt>From SMT to ASP: Solver-Based Approaches to Solving Datalog Synthesis-as-Rule-Selection Problems</dt>
       <dd>
-      Aaron Bembenek, Michael Greenberg, and Stephen Chong<br>
-      Proceedings of the ACM Programming Languages (POPL 2023)<br>
-      <a href="papers/datalog-synth-popl2023.pdf">pdf</a> &#x274A; <a href="papers/datalog-synth-popl2023.bib">bib</a>
-      &#x274A; <a href="https://zenodo.org/record/7150677">artifact</a>
+        Aaron Bembenek, Michael Greenberg, and Stephen Chong<br>
+        Proceedings of the ACM Programming Languages (POPL 2023)<br>
+        <a href="papers/datalog-synth-popl2023.pdf">pdf</a> &#x274A; <a href="papers/datalog-synth-popl2023.bib">bib</a>
+        &#x274A; <a href="https://zenodo.org/record/7150677">artifact</a>
       </dd>
-      
+
       <dt>Formulog: Datalog + SMT + FP
       <dd>
         Aaron Bembenek, Michael Greenberg, and Stephen Chong<br>
@@ -101,47 +124,48 @@
 
       <dt>Formulog: Datalog for SMT-Based Static Analysis</dt>
       <dd>
-      Aaron Bembenek, Michael Greenberg, and Stephen Chong<br>
-      Proceedings of the ACM Programming Languages (OOPSLA 2020)<br>
-      <a href="papers/formulog-oopsla2020.pdf">pdf</a> &#x274A; <a href="papers/formulog-oopsla2020.bib">bib</a> &#x274A; <a
-        href="https://doi.org/10.5281/zenodo.4039085">artifact</a> &#x274A; <a href="http://arxiv.org/abs/2009.08361">extended
-        version</a> &#x274A; <a href="https://dl.acm.org/doi/10.1145/3428209">talk</a>
+        Aaron Bembenek, Michael Greenberg, and Stephen Chong<br>
+        Proceedings of the ACM Programming Languages (OOPSLA 2020)<br>
+        <a href="papers/formulog-oopsla2020.pdf">pdf</a> &#x274A; <a href="papers/formulog-oopsla2020.bib">bib</a>
+        &#x274A; <a href="https://doi.org/10.5281/zenodo.4039085">artifact</a> &#x274A; <a
+          href="http://arxiv.org/abs/2009.08361">extended
+          version</a> &#x274A; <a href="https://dl.acm.org/doi/10.1145/3428209">talk</a>
       </dd>
 
       <dt>Datalog-Based Systems Can Use Incremental SMT Solving (Extended Abstract)</dt>
       <dd>
-      Aaron Bembenek, Michael Ballantyne, Michael Greenberg, and Nada Amin<br>
-      36th International Conference on Logic Programming (ICLP 2020)<br>
-      <a href="papers/datalog-incr-smt-iclp2020.pdf">pdf</a> &#x274A; <a href="papers/datalog-incr-smt-iclp2020.bib">bib</a> &#x274A; <a href="https://youtu.be/DzZNJwV8ke4">talk</a>
+        Aaron Bembenek, Michael Ballantyne, Michael Greenberg, and Nada Amin<br>
+        36th International Conference on Logic Programming (ICLP 2020)<br>
+        <a href="papers/datalog-incr-smt-iclp2020.pdf">pdf</a> &#x274A; <a
+          href="papers/datalog-incr-smt-iclp2020.bib">bib</a> &#x274A; <a href="https://youtu.be/DzZNJwV8ke4">talk</a>
       </dd>
 
       <dt>Going Into Greater Depth in the Quest for Hidden Frames (Late-Breaking Paper)</dt>
       <dd>
-      João Gonçalves, Aaron Bembenek, Pedro Martins, and Amílcar Cardoso<br>
-      10th International Conference on Computational Creativity (ICCC 2019)<br>
-<a href="papers/frames-iccc2019.pdf">pdf</a> &#x274A; <a href="papers/frames-iccc2019.bib">bib</a>
+        João Gonçalves, Aaron Bembenek, Pedro Martins, and Amílcar Cardoso<br>
+        10th International Conference on Computational Creativity (ICCC 2019)<br>
+        <a href="papers/frames-iccc2019.pdf">pdf</a> &#x274A; <a href="papers/frames-iccc2019.bib">bib</a>
       </dd>
 
       <dt>Differential Privacy: A Primer for a Non-Technical Audience</dt>
       <dd>
-      Alexandra Wood, Micah Altman, Aaron Bembenek, Mark Bun, Marco Gaboardi,
-      James Honaker, Kobbi Nissim, David R. O'Brien, Thomas Steinke, and Salil
-      Vadhan<br>
-      Vanderbilt Journal of Entertainment &amp; Technology Law (JETLaw 2018)<br>
-<a href="papers/dp-primer-jet2018.pdf">pdf</a> &#x274A; <a href="papers/dp-primer-jet2018.bib">bib</a>
+        Alexandra Wood, Micah Altman, Aaron Bembenek, Mark Bun, Marco Gaboardi,
+        James Honaker, Kobbi Nissim, David R. O'Brien, Thomas Steinke, and Salil
+        Vadhan<br>
+        Vanderbilt Journal of Entertainment &amp; Technology Law (JETLaw 2018)<br>
+        <a href="papers/dp-primer-jet2018.pdf">pdf</a> &#x274A; <a href="papers/dp-primer-jet2018.bib">bib</a>
       </dd>
 
       <dt>Bridging the Gap between Computer Science and Legal Approaches
-      to Privacy</dt>
+        to Privacy</dt>
       <dd>
-      Kobbi Nissim, Aaron Bembenek, Alexandra Wood, Mark Bun,
-      Marco Gaboardi, Urs Gasser, David R. O’Brien, and Salil Vadhan<br>
-      Harvard Journal of Law &amp; Technology (JOLT 2018)<br>
-      Co-won the 2019 <a
-          href="https://petsymposium.org/award/winners.php">Caspar Bowden Award
+        Kobbi Nissim, Aaron Bembenek, Alexandra Wood, Mark Bun,
+        Marco Gaboardi, Urs Gasser, David R. O’Brien, and Salil Vadhan<br>
+        Harvard Journal of Law &amp; Technology (JOLT 2018)<br>
+        Co-won the 2019 <a href="https://petsymposium.org/award/winners.php">Caspar Bowden Award
           for Outstanding Research in Privacy Enhancing
-      Technologies</a><br>
-<a href="papers/bridging-jolt2018.pdf">pdf</a> &#x274A; <a href="papers/bridging-jolt2018.bib">bib</a>
+          Technologies</a><br>
+        <a href="papers/bridging-jolt2018.pdf">pdf</a> &#x274A; <a href="papers/bridging-jolt2018.bib">bib</a>
       </dd>
     </dl>
 
@@ -149,18 +173,19 @@
       <h2>Projects</h2>
     </div>
     <dl>
-    <dt><a href="https://HarvardPL.github.io/formulog"><span class="project-heading">Formulog</span> </a></dt>
+      <dt><a href="https://HarvardPL.github.io/formulog"><span class="project-heading">Formulog</span> </a></dt>
       <dd>
-      Formulog ties together the logic programming language Datalog and off-the-shelf SMT solvers.
-      It is designed for writing SMT-based static analyses in a way that is both close to their formal specifications, and amenable to high-level optimizations and efficient evaluation.
+        Formulog ties together the logic programming language Datalog and off-the-shelf SMT solvers.
+        It is designed for writing SMT-based static analyses in a way that is both close to their formal specifications,
+        and amenable to high-level optimizations and efficient evaluation.
       </dd>
-    <dt><a href="http://abcdatalog.seas.harvard.edu"><span class="project-heading">AbcDatalog</span> </a></dt>
+      <dt><a href="http://abcdatalog.seas.harvard.edu"><span class="project-heading">AbcDatalog</span> </a></dt>
       <dd>
-      AbcDatalog is an open-source implementation of the logic programming
-      language Datalog written in Java.  It provides a basic GUI and ready-to-use
-      implementations of multiple standard Datalog evaluation algorithms.
-      It is designed to be
-      easily extensible with new evaluation engines and language features.
+        AbcDatalog is an open-source implementation of the logic programming
+        language Datalog written in Java. It provides a basic GUI and ready-to-use
+        implementations of multiple standard Datalog evaluation algorithms.
+        It is designed to be
+        easily extensible with new evaluation engines and language features.
       </dd>
       <!--
       <dt><a href="http://privacytools.seas.harvard.edu/"><span class="project-heading">Privacy Tools Project</span></a></dt>
@@ -180,76 +205,78 @@
       <h2>Teaching</h2>
     </div>
     <ul>
-    <li>
-      Co-instructor, CSC 600: Programming Paradigms and Languages (San Francisco State, 2022)
-    <li>
-      Co-organizer, <a
-          href="https://www.seas.harvard.edu/courses/cs252/2020sp/">CS 252r:
-          Verified Compilation</a> (Harvard, 2020)
-    </li>
-    <li>
-      Teaching Fellow, <a
-          href="https://www.seas.harvard.edu/courses/cs153/2018fa/">CS 153:
-          Compilers</a> (Harvard, 2018)
-    </li>
-    <li>
-      Teaching Fellow, <a
-          href="http://www.seas.harvard.edu/courses/cs152/2016sp/">CS 152:
-          Programming Languages</a> (Harvard, 2016)
-    </li>
+      <li>
+        Co-instructor, CSC 600: Programming Paradigms and Languages (San Francisco State University, 2022)
+      <li>
+        Co-organizer, <a href="https://www.seas.harvard.edu/courses/cs252/2020sp/">CS 252r:
+          Verified Compilation</a> (Harvard University, 2020)
+      </li>
+      <li>
+        Teaching Fellow, <a href="https://www.seas.harvard.edu/courses/cs153/2018fa/">CS 153:
+          Compilers</a> (Harvard University, 2018)
+      </li>
+      <li>
+        Teaching Fellow, <a href="http://www.seas.harvard.edu/courses/cs152/2016sp/">CS 152:
+          Programming Languages</a> (Harvard University, 2016)
+      </li>
     </ul>
 
     <div class="page-header">
       <h2>Service</h2>
     </div>
     <ul>
-    <li>
-      Sub-reviewer, 16th International Symposium on Functional and Logic Programming (FLOPS 2022)
-    </li>
+      <li>
+        Reviewer, IEEE Transactions on Software Engineering (2023)
+      </li>
+      <li>
+        Sub-reviewer, 16th International Symposium on Functional and Logic Programming (FLOPS 2022)
+      </li>
     </ul>
 
     <div class="page-header">
       <h2>Honors and awards</h2>
     </div>
     <ul>
-    <li>
-      <a href="https://petsymposium.org/award/winners.php">
-      Caspar Bowden Award for Outstanding Research in Privacy Enhancing
-      Technologies</a> (Privacy Enhancing Technologies Symposium (PETS), 2019)
-    </li>
-    <li>
-      Nominated for <a
-        href="https://bokcenter.harvard.edu/teaching-awards#boxes-box-1513129576">Derek
-        C. Bok Award for Excellence in Graduate Student Teaching of
-      Undergraduates</a> (Harvard, 2018)
-    </li>
-    <li>
-      <a
-      href="https://bokcenter.harvard.edu/teaching-awards">Certificate of
-      Distinction in Teaching</a> (Harvard, 2016 and 2018)
-    </li>
-    <li>
-      Smith Family Graduate Science and Engineering Fellowship (Harvard, 2017-2018)
-    </li>
+      <li>
+        <a href="https://petsymposium.org/award/winners.php">
+          Caspar Bowden Award for Outstanding Research in Privacy Enhancing
+          Technologies</a> (Privacy Enhancing Technologies Symposium (PETS), 2019)
+      </li>
+      <li>
+        Nominated for <a href="https://bokcenter.harvard.edu/teaching-awards#boxes-box-1513129576">Derek
+          C. Bok Award for Excellence in Graduate Student Teaching of
+          Undergraduates</a> (Harvard University, 2018)
+      </li>
+      <li>
+        <a href="https://bokcenter.harvard.edu/teaching-awards">Certificate of
+          Distinction in Teaching</a> (Harvard University, 2016 and 2018)
+      </li>
+      <li>
+        Smith Family Graduate Science and Engineering Fellowship (Harvard University, 2017-2018)
+      </li>
     </ul>
 
     <div class="page-header">
       <h2>Contact</h2>
     </div>
     <p>Messenger pigeon is preferred. If your local dovecote is depleted, feel
-    free to email me at
-    <a id="mailto" href="default.html" class="email">
-    <!-- showEmail script shamelessly stolen from Andrew Myers via Steve Chong. -->
-    <span id="cutme">Turn on JavaScript to view the email address</span></a>.
-    <script>
-      showEmail("mailto","cutme","zzitu5y~vy~u~p","unimelb.edu.au",27,"Aaron Bembenek");
-    </script>
-    If you are on the University of Melbourne campus, you might be able to find me in Melbourne Connect (Building 290).</p>
+      free to email me at
+      <a id="mailto" href="default.html" class="email">
+        <!-- showEmail script shamelessly stolen from Andrew Myers via Steve Chong. -->
+        <span id="cutme">Turn on JavaScript to view the email address</span></a>.
+      <script>
+        showEmail("mailto", "cutme", "zzitu5y~vy~u~p", "unimelb.edu.au", 27, "Aaron Bembenek");
+      </script>
+      If you are on the University of Melbourne campus, you might be able to find me in Melbourne Connect (Building
+      290).
+    </p>
 
-  <footer>
-    <hr>
-    <p>Last updated <script>document.write(document.lastModified);</script><noscript>sometime</noscript>.</p>
-  </footer>
+    <footer>
+      <hr>
+      <p>Last updated
+        <script>document.write(document.lastModified);</script><noscript>sometime</noscript>.
+      </p>
+    </footer>
 
   </div>
 
@@ -261,4 +288,5 @@
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
+
 </html>
