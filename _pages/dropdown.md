@@ -1,7 +1,7 @@
 ---
 layout: page
 title: submenus
-nav: true
+nav: false # no bookshelf yet; re-enable when populated
 nav_order: 8
 dropdown: true
 children:
