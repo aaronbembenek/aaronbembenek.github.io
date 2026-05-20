@@ -116,16 +116,21 @@ The reason is not so much that algorithms are the traditional way of structuring
 If you asked me if I can do addition, I would answer in the affirmative: give me any two numbers, and I can add them up for you (provided my lifetime is enough to do so).
 The reason I can say this is not because I've done some additions in the past, and so I reckon I'll be pretty good at doing addition in the future---rather, I can be confident in my ability because I know the algorithm for performing addition (i.e., column addition), and this algorithm generalizes to any two numbers.
 In the same way, when we say that an AI system can perform addition, what we really mean (or should mean) is that it can perform the algorithm for addition.
-To me, it would be a pretty shoddy definition of superintelligence if the definition does not include the ability to reliably perform algorithms.
+To me, it would be a pretty shoddy definition of superintelligence if the definition did not include the ability to reliably perform algorithms.
 
-A counterpoint might be that it is not necessary for learned models to be able to perform algorithms themselves, so long as they can call external tools that do the algorithms.
-This is more in line with the approach of agentic AI, and is indeed the way that some AI systems handle addition: instead of performing addition internally (through neural network inference), they use external code, such as the Python interpreter, to add two numbers together.
-This strikes me as a totally reasonable approach to handling an algorithm like addition.
-However, it is *not* currently a satisfactory approach when it comes to automated reasoning more broadly.
+I would go further, and suggest that we should expect AI to reliably perform algorithms *while using intuition*.
+After all, this is what humans do: if you gave me a complex mathematical expression and asked me to simplify it, I would not only work algorithmically---by systematically applying simplification rules (such as mathematical identities)---but do so while using intuition to choose where in the expression to apply a simplification, and which simplification rule to use.
+Moreover, my intuition for the problem would evolve through the course of solving it; for example, if I discover that some sequence of simplifications is successful in one part of the problem, I might try those simplifications again when I run across a similar subproblem.
+This is exactly the type of logical-intuitive reasoning supported by the parallel neurosymbolic architecture I propose.
+Indeed, I believe that parallel neurosymbolic computation should be the foundation for how future frontier models reason.
+
+The need for parallel neurosymbolic computations is just as present in agentic systems.
+Instead of performing an algorithm directly (through neural network inference), an agent might discharge the algorithmic processing to an external tool; for example, an agent might use a Python interpreter to add two numbers together. 
+While this is a reasonable approach to handling an algorithm like addition, it is *not* currently a satisfactory approach when it comes to automated reasoning.
 The reason is that, unlike addition, the typical automated reasoning task involves a search that would genuinely benefit from the intuition of neural networks (as I argued earlier in this post).
 But, if an agent just invokes an external automated reasoning tool built on symbolic AI, there is no way for the agent's intuition to flow through that computation.
 Thus, the agentic system is faced with the same pain points that users of symbolic AI have always encountered.
-Luckily, the parallel neurosymbolic architecture I propose offers a solution: if the automated reasoning tool were built following my architecture, the agent's intuition could flow into the reasoning process, and updated intuition would flow back to the agent with the solution.
+Luckily, the parallel neurosymbolic architecture I propose offers a solution: if the automated reasoning tool were built following my architecture, the agent's intuition could flow into the reasoning process, and updated intuition would flow back into the agent with the solution.
 
 <hr>
 
