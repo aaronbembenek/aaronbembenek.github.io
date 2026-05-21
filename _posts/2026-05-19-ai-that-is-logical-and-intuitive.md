@@ -45,7 +45,7 @@ However, symbolic AI has two shortcomings that has limited its impact in practic
 First, it often fails to scale to automated reasoning problems with large search spaces, as it cannot use intuition to more efficiently guide its search for a solution.
 In our example, a symbolic AI system might try to prove that Socrates is mortal by using the second rule, which would then require it to establish that "Socrates is a horse"; needless to say, this would lead to a dead end, and the AI system would have to start again.
 A human familiar with Greek philosophy would not fall into this trap: they have prior knowledge that the historical Socrates was a person, not a horse, and so would be suspicious that the second rule would be useful for proving Socrates' mortality.
-Unfortunately, in contrast, it is as likely as not that a symbolic AI system would explore the wrong path---after all, in the purely logical world of symbolic AI, terms like "person", "mortal", "horse", and "Socrates" are just formal symbols with no connection to real-world phenomena.
+Unfortunately, in contrast, a symbolic AI system is just as likely to explore the wrong path as the right one---after all, in the purely logical world of symbolic AI, terms like "person", "mortal", "horse", and "Socrates" are just formal symbols with no connection to real-world phenomena.
 That is, a symbolic AI system has no access to the external meanings of these terms, and thus the terms do not provide any information that can be used to guide search.
 
 Second, symbolic AI is difficult to use, as pure logic is hard to understand (at least for most people, myself included), and symbolic AI tools are incapable of explaining their reasoning in an intuitive way.
@@ -56,10 +56,10 @@ Our Socrates example is small and simple enough that this problem does not manif
 To address these limitations, researchers have become interested in building automated reasoning systems based on *neurosymbolic AI*---a hybrid paradigm where symbolic AI is combined with neural networks, such as large language models (LLMs).
 Whereas symbolic AI makes logical inferences based on rules, neural networks make statistical inferences based on learned patterns; these learned patterns can simulate intuition.
 Indeed, it often appears that an LLM is acting with some form of intuition when we ask it to solve a task.
-On the other hand, LLMs are not guaranteed to act logically (not even in the "reasoning" modes), and thus LLMs are untrustworthy.
+On the other hand, neural networks like LLMs are not guaranteed to act logically (not even in "reasoning" modes), and thus neural networks and LLMs are untrustworthy.
 
-The goal here is to build automated reasoning systems that use "intuition" while staying logically correct---that is, to combine the advantages of neural networks and symbolic AI.
-However, it is an open question about how to actually combine symbolic AI and neural networks to achieve the full potential of this combination.
+The hope is that neurosymbolic AI will enable automated reasoning systems that use "intuition" while staying logically correct---that is, that combine the advantages of neural networks and symbolic AI.
+It is an open question about how to actually combine symbolic AI and neural networks to achieve the full potential of this combination.
 Indeed, I believe that our current approach to structuring neurosymbolic AI systems is limiting the impact this exciting paradigm can have on automated reasoning.
 
 Currently, neurosymbolic automated reasoning systems are conceptualized as consisting of multiple components chained together *in sequence*, where some components are symbolic, and some are neural networks (typically an LLM).[^2]
@@ -69,7 +69,7 @@ The idea is that, as the counterexamples accumulate, the guesser will be led to 
 
 {% include figure.liquid
    path="assets/img/sequential_loop.svg"
-   caption="A guess-and-check loop in the sequential neurosymbolic architecture, where an implicit neural-symbolic boundary separates the world of intuition (blue) from the world of logic (orange)"
+   caption="A guess-and-check loop in the sequential neurosymbolic architecture, where an implicit neural-symbolic boundary separates the world of intuition (left, blue) from the world of logic (right, orange)"
    alt="A clockwise loop with two component boxes: on the left, a blue 'Guesser (LLM)' box; on the right, an orange 'Symbolic checker' box. A vertical dashed line between them marks the neural-symbolic boundary. Along the top, the guess flows left to right, appearing first as a blue 'Neural guess' box and then, after crossing the boundary, as an orange 'Symbolic guess' box. Along the bottom, the counterexample flows right to left, appearing first as an orange 'Symbolic counterexample' box and then, after crossing the boundary, as a blue 'Neural counterexample' box."
    width="50%"
    class="mx-auto d-block" %}
@@ -82,7 +82,7 @@ Here, we have no guarantees about the behavior of the guesser: we cannot be sure
 These types of guarantees are standard for symbolic algorithms, but very hard to establish even for small neural networks, let alone frontier language models.
 In principle, the LLM might guess the same wrong answers repeatedly, meaning that the guess-and-check loop never makes progress.
 
-Second, the checker, being purely symbolic, does not have any of the advantages of neural networks, which would allow it to operate over "intuition". 
+Second, the checker, being purely symbolic, does not have any of the advantages of neural networks, which would allow it to operate with "intuition". 
 For one, it cannot ingest intuition for the candidate solution it receives.
 This is a loss: if the checker had access to the intuition behind a guess, the checker could produce a counterexample that more effectively addresses why that intuition is incorrect. 
 Moreover, the checker cannot give any intuition when it produces a counterexample; such intuition might help the guesser better understand how the counterexample works, leading to a better subsequent guess.
@@ -117,7 +117,7 @@ Building on this core insight, my fellowship project has three aims:
 
 1. To develop a theoretical model that captures the type of parallel neurosymbolic computations I have sketched here;
 2. To implement a neurosymbolic programming language that reifies this theoretical model; and
-3. To use the programming language to build cutting-edge automated reasoning systems.
+3. To use the programming language to build cutting-edge, neurosymbolic automated reasoning systems.
 
 In my next post, I will describe an example system built on parallel neurosymbolic computation.
 In later posts, I will show how this example is one instance of a general technique for taking a symbolic algorithm and making it neurosymbolic.
