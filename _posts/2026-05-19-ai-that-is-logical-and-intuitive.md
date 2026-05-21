@@ -54,7 +54,8 @@ Our Socrates example is small and simple enough that this problem does not manif
 
 To address these limitations, researchers have become interested in building automated reasoning systems based on *neurosymbolic AI*---a hybrid paradigm where symbolic AI is combined with neural networks, such as large language models (LLMs).
 Whereas symbolic AI makes logical inferences based on rules, neural networks make statistical inferences based on learned patterns; these learned patterns can simulate intuition.
-Indeed, it often appears that an LLM is acting with some form of intuition when we ask it to solve a task; on the other hand, LLMs are not guaranteed to act logically (not even in the "reasoning" modes), and thus LLMs are untrustworthy.
+Indeed, it often appears that an LLM is acting with some form of intuition when we ask it to solve a task.
+On the other hand, LLMs are not guaranteed to act logically (not even in the "reasoning" modes), and thus LLMs are untrustworthy.
 
 The goal here is to build automated reasoning systems that use "intuition" while staying logically correct---that is, to combine the advantages of neural networks and symbolic AI.
 However, it is an open question about how to actually combine symbolic AI and neural networks to achieve the full potential of this combination.
@@ -62,10 +63,10 @@ Indeed, I believe that our current approach to structuring neurosymbolic AI syst
 
 Currently, neurosymbolic automated reasoning systems are conceptualized as consisting of multiple components chained together *in sequence*, where some components are symbolic, and some are neural networks (typically an LLM).[^2]
 A classic example is the guess-and-check loop, where the LLM plays the role of the "guesser", and the symbolic component plays the role of the "checker".
-The LLM guesses a candidate solution to a problem; the symbolic component checks if it is actually a solution; if not, the symbolic component passes a counterexample to the LLM (demonstrating why the candidate is a non-solution), and the LLM guesses again.
+The LLM guesses a candidate solution to a problem; the symbolic component checks if it is actually a solution; if not, the symbolic component passes a counterexample to the LLM (demonstrating why the candidate is not a solution), and the LLM guesses again.
 The idea is that, as the counterexamples accumulate, the guesser will be led to a solution.
 
-There are two limitations that are fundamental to an architecture like this, where computation flows through neural networks and symbolic components sequentially.
+There are two limitations that are fundamental to an architecture like this, where computation flows through neural networks and symbolic components in sequence.
 
 First, the guesser, being purely neural, does not have any of the advantages of symbolic AI.
 An advantage of symbolic AI is that it is trustworthy: we can have definite guarantees about its behavior.
@@ -78,7 +79,7 @@ For one, it cannot ingest intuition for the candidate solution it receives.
 This is a loss: if the checker had access to the intuition behind a guess, the checker could produce a counterexample that more effectively addresses why that intuition is incorrect. 
 Moreover, the checker cannot give any intuition when it produces a counterexample; such intuition might help the guesser better understand how the counterexample works, leading to a better subsequent guess.
 
-These limitations are inherent in our current Frankenstein-esque approach of bolting together symbolic components and neural networks in sequence.
+These limitations are inherent in our current (slightly Frankenstein-esque) approach of bolting together symbolic components and neural networks in sequence.
 My project asks how we can integrate symbolic components and neural networks in a deeper, principled way that will enable us to build more powerful neurosymbolic automated reasoning systems.
 
 #### My insight: intuition and logic should evolve in parallel
@@ -103,7 +104,8 @@ Building on this core insight, my fellowship project has three aims:
 2. To implement a neurosymbolic programming language that reifies this theoretical model; and
 3. To use the programming language to build cutting-edge automated reasoning systems.
 
-In my next post, I will give an intuitive description of the theoretical model I am developing, and how it can be used as a recipe for taking a symbolic algorithm and making it neurosymbolic.
+In my next post, I will describe an example system built on parallel neurosymbolic computation.
+In later posts, I will show how this example is one instance of a general technique for taking a symbolic algorithm and making it neurosymbolic.
 
 **I am looking for collaborators, so if this work interests you, please get in touch!**
 
@@ -119,7 +121,7 @@ Accordingly, my argument starts with the point that rule-based algorithms will r
 The reason is not so much that algorithms are the traditional way of structuring computation; rather, my reason is that algorithms are the necessary basis for genuine mastery of certain tasks.
 If you asked me if I can do addition, I would answer in the affirmative: give me any two numbers, and I can add them up for you (provided my lifetime is enough to do so).
 The reason I can say this is not because I've done some additions in the past, and so I reckon I'll be pretty good at doing addition in the future---rather, I can be confident in my ability because I know the algorithm for performing addition (i.e., grade-school column addition), and this algorithm generalizes to any two numbers.
-In the same way, when we say that an AI system can perform addition, what we really mean (or should mean) is that it can perform the algorithm for addition.
+In the same way, when we say that an AI system can perform addition, what we really mean (or should mean) is that it can perform an algorithm for addition.
 To me, it would be a pretty shoddy definition of superintelligence if the definition did not include the ability to reliably perform algorithms.
 
 I would go further, and suggest that we should expect AI to reliably perform algorithms *while using intuition*.
@@ -134,7 +136,7 @@ While this is a reasonable approach to handling an algorithm like addition, it i
 The reason is that, unlike addition, the typical automated reasoning task involves a search that would genuinely benefit from the intuition of neural networks (as I argued earlier in this post).
 But, if an agent just invokes an external automated reasoning tool built on symbolic AI, there is no way for the agent's intuition to flow through that computation.
 Thus, the agentic system is faced with the same pain points that users of symbolic AI have always encountered: search cannot scale to larger problems, and there is no intuitive view into the reasoning process.
-Luckily, the parallel neurosymbolic architecture I propose offers a solution: if the automated reasoning tool were built following my architecture, the agent's intuition could flow into the reasoning process, and updated intuition would flow back into the agent with the solution.
+Luckily, the parallel neurosymbolic architecture I propose offers a solution: if the external automated reasoning tool were built following my architecture, the agent's intuition could flow into the reasoning process, and updated intuition would flow back into the agent with the solution.
 This would more deeply integrate the agent with the external tools it invokes.
 
 <hr>
