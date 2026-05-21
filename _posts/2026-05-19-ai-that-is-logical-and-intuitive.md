@@ -99,6 +99,13 @@ During the neurosymbolic computation, the logical and intuitive facets of the co
 When search reaches a decision point, the accumulated intuition can be used to guide logical reasoning toward the most likely path.
 The output of the neurosymbolic computation is then logical data (the solution to the problem, as determined by the symbolic rules) equipped with intuition about that data (the intuition accumulated during computation).
 
+{% include figure.liquid
+   path="assets/img/parallel_nesy.svg"
+   caption="The high-level structure of the parallel neurosymbolic architecture I propose; all data and computation simultaneously have both logical (orange) and intuitive (blue) facets, and computation happens over logic and intuition in parallel"
+   alt="Three boxes in a left-to-right row connected by arrows, each split into an orange upper half (logical) and a blue lower half (intuitive). Left box: 'Logical problem' (orange) over 'Intuition for problem' (blue). Center box: 'Logical computation' (orange) over 'Computation over intuition' (blue). Right box: 'Logical solution' (orange) over 'Intuition for solution' (blue)."
+   width="50%"
+   class="mx-auto d-block" %}
+
 Consider the guess-and-check architecture again.
 In my framing, the guesser is no longer purely neural---it is now backed by symbolic computation.
 This means that we can get guarantees about its behavior, such as that it always produces guesses that are consistent with the counterexamples it has received (and thus search makes progress).
