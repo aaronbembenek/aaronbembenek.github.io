@@ -66,6 +66,13 @@ A classic example is the guess-and-check loop, where the LLM plays the role of t
 The LLM guesses a candidate solution to a problem; the symbolic component checks if it is actually a solution; if not, the symbolic component passes a counterexample to the LLM (demonstrating why the candidate is not a solution), and the LLM guesses again.
 The idea is that, as the counterexamples accumulate, the guesser will be led to a solution.
 
+{% include figure.liquid
+   path="assets/img/sequential_loop.svg"
+   caption="A guess-and-check loop in the sequential neurosymbolic architecture, where an implicit neural-symbolic boundary separates the world of intuition (blue) from the world of logic (orange)"
+   alt="A clockwise loop with two component boxes: on the left, a blue 'Guesser (LLM)' box; on the right, an orange 'Symbolic checker' box. A vertical dashed line between them marks the neural-symbolic boundary. Along the top, the guess flows left to right, appearing first as a blue 'Neural guess' box and then, after crossing the boundary, as an orange 'Symbolic guess' box. Along the bottom, the counterexample flows right to left, appearing first as an orange 'Symbolic counterexample' box and then, after crossing the boundary, as a blue 'Neural counterexample' box."
+   width="50%"
+   class="mx-auto d-block" %}
+
 There are two limitations that are fundamental to an architecture like this, where computation flows through neural networks and symbolic components in sequence.
 
 First, the guesser, being purely neural, does not have any of the advantages of symbolic AI.
@@ -87,16 +94,23 @@ My project asks how we can integrate symbolic components and neural networks in 
 In current conceptualizations, logical computation (through symbolic components) and computation over "intuition" (through neural networks) happen in sequence.
 My insight is that, instead, logical computation and computation over intuition should happen *in parallel*.
 In this framing, the input to a neurosymbolic computation is logical data (the problem to be solved) equipped with intuition about that data (e.g., what that problem represents in the real world).
-During the neurosymbolic computation, the logical and intuitive facets of the computation state evolve in parallel: the logical part evolves through symbolic rules (guaranteeing the overall computation is trustworthy), while each logical step is mirrored by a corresponding transformation over intuition.
+During the neurosymbolic computation, the logical and intuitive facets of the computation's state evolve in parallel: the logical part evolves through symbolic rules (guaranteeing the overall computation is trustworthy), while each logical step is mirrored by a corresponding transformation over intuition.
 When search reaches a decision point, the accumulated intuition can be used to guide logical reasoning toward the most likely path.
-The output the neurosymbolic computation is then logical data (the solution to the problem, as determined by the symbolic rules) equipped with intuition about that data (the intuition accumulated during computation).
+The output of the neurosymbolic computation is then logical data (the solution to the problem, as determined by the symbolic rules) equipped with intuition about that data (the intuition accumulated during computation).
 
 Consider the guess-and-check architecture again.
 In my framing, the guesser is no longer purely neural---it is now backed by symbolic computation.
-This means that we can get guarantees about its behavior, such as that it always produces guesses that are consistent with the counterexamples it has received.
+This means that we can get guarantees about its behavior, such as that it always produces guesses that are consistent with the counterexamples it has received (and thus search makes progress).
 Analogously, the checker is no longer purely symbolic---it is now enriched with a computation over intuition.
 This means that the checker can now ingest intuition, use it to find more effective counterexamples, and attach intuition to those counterexamples.
 This reframing leads to neurosymbolic systems that have better computational properties (since we can make stronger claims about their behavior), and that, I reckon, should be more powerful in practice, as intuition flows throughout the entire computation.
+
+{% include figure.liquid
+   path="assets/img/parallel_loop.svg"
+   caption="A guess-and-check loop in the parallel neurosymbolic architecture; unlike the sequential architecture, every component is neurosymbolic (NeSy), and computation does not flow across a neural-symbolic boundary"
+   alt="A clockwise loop with two component boxes, each split into an orange upper half (symbolic) and a blue lower half (neural): a 'NeSy guesser' on the left and a 'NeSy checker' on the right, with no boundary line between them. Along the top, the guess flows from guesser to checker as a single two-part box: 'Symbolic guess' on the orange upper half and 'Intuition for guess' on the blue lower half. Along the bottom, the counterexample flows back as a similarly split box: 'Symbolic counterexample' (orange, top) and 'Intuition for counterexample' (blue, bottom)."
+   width="50%"
+   class="mx-auto d-block" %}
 
 Building on this core insight, my fellowship project has three aims:
 
