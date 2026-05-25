@@ -7,6 +7,8 @@ tags: neurosymbolic-ai automated-reasoning
 categories: mckenzie 
 ---
 
+(Probably can make this more nuanced: unclear, in a way, whether logical reasoning is necessary for AI systems that are useful to society, or just an approximation of logical reasoning is good enough. Maybe depends on what the threshold for trustworthiness is)
+
 A reasonable concern is whether all of this will actually matter as LLMs and agents get more powerful.
 I strongly believe it will (unsurprisingly, as otherwise I wouldn't be working on it ☺️).
 
