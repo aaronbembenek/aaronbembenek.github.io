@@ -7,7 +7,7 @@ nav: true
 nav_order: 4
 ---
 
-## Conference Program Committees
+## Program Committees
 
 - International Workshop on Language Models and Programming Languages (LMPL 2026)
 - International Symposium on Practical Aspects of Declarative Languages (PADL 2026)
