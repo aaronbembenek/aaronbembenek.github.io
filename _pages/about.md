@@ -50,5 +50,5 @@ I enjoy reading and spending time outdoors.
 
 - [McKenzie Postdoctoral Fellowship](https://sites.research.unimelb.edu.au/research-funding/researcher-development-schemes/mckenzie-fellowship) (The University of Melbourne's flagship postdoc fellowship, starting mid-2026)
 - Annual school-wide award for "Excellence in Research (Early Career)" (School of Computing and Information Systems, The University of Melbourne, 2025)
-- [Distinguished Artifact](https://2024.splashcon.org/track/splash-2024-oopsla-artifacts#distinguished-artifacts) (OOPSLA 2024)
+- [OOPSLA Distinguished Artifact](https://2024.splashcon.org/track/splash-2024-oopsla-artifacts#distinguished-artifacts) (2024)
 - [Caspar Bowden Award for Outstanding Research in Privacy Enhancing Technologies](https://petsymposium.org/award/winners.php) (PETS 2019)
