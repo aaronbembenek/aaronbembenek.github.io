@@ -1,8 +1,8 @@
 ---
 layout: post
-title: AI That Is Logical and Intuitive 
+title: AI That Is Simultaneously Logical and Intuitive 
 date: 2026-05-19
-description: Introducing my McKenzie Postdoctoral Fellowship project 
+description: Introducing the parallel neurosymbolic architecture 
 tags: neurosymbolic-ai automated-reasoning
 categories: research
 ---
@@ -48,7 +48,7 @@ To make this more concrete, we can imagine that we have the following twelve rul
 1. Socrates is a person.
 
 Given the task of proving "Socrates is mortal", a symbolic AI system would search for a proof of this proposition, using these rules to establish evidence.
-The trace of the AI system might look something like this (indenting representing the search stage):
+The trace of the AI system might look something like this:
 
 - I need to prove that Socrates is mortal.
 - To do so, I need to select a rule that defines "mortal".
@@ -78,7 +78,7 @@ In our example, a symbolic AI system might try to prove that Socrates is mortal 
 - I chose Rule #10: Every raptor is a bird. Now, I need to prove that Socrates is a raptor.
 - ...
 
-A human familiar with Greek philosophy would not fall into this trap: they have prior knowledge that the historical Socrates was a person, not a bird (of any type), and so would be suspicious that Rule #3 would be useful for proving Socrates' mortality.
+A human familiar with the history of Western philosophy would not fall into this trap: they would have prior knowledge that the historical Socrates was a person, not a bird (of any type), and so would be suspicious that Rule #3 would be useful for proving Socrates' mortality.
 Unfortunately, in contrast, a symbolic AI system does not have the same intuition---after all, in the purely logical world of symbolic AI, terms like "person", "mortal", "penguin", and "Socrates" are just formal symbols with no connection to real-world phenomena.
 That is, a symbolic AI system has no access to the external meanings of these terms, and thus the terms do not provide any information that can be used to guide search.
 
@@ -160,8 +160,9 @@ Building on this core insight, my fellowship project has three aims:
 2. To implement a neurosymbolic programming language that reifies this theoretical model; and
 3. To use the programming language to build cutting-edge, neurosymbolic automated reasoning systems.
 
-In my next post, I will describe an example system built on parallel neurosymbolic computation.
-In later posts, I will show how this example is one instance of a general technique for taking a symbolic algorithm and making it neurosymbolic.
+In my next post, I will walk through how to build a simple reasoning system that performs parallel neurosymbolic computation, and foreshadow a general recipe for taking a symbolic algorithm and making it neurosymbolic.
+
+#### Most Importantly...
 
 **I am looking for collaborators, so if this work interests you, please get in touch!**
 
