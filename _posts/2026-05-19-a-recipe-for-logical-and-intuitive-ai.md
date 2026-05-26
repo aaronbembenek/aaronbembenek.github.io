@@ -4,7 +4,7 @@ title: A Recipe for Logical and Intuitive AI
 date: 2026-05-20
 description: Introducing the Neurosymbolic Transition System (NSTS) framework
 tags: neurosymbolic-ai automated-reasoning
-categories: mckenzie 
+categories: research 
 ---
 
 In my previous post, I introduced and motivated my McKenzie Postdoctoral Fellowship, which is all about designing AI systems where logic and intuition evolve in parallel.
@@ -121,6 +121,9 @@ class Intuition:
 
     def __call__(self, intuition: str):
         self.log.append(intuition)
+    
+    def __str__(self):
+        return "\n".join(self.log)
 
 
 INTUITION = Intuition(
@@ -141,7 +144,7 @@ class Guesser:
             INTUITION("No operators left to guess.")
             return None
         query = f"Choose an operator from {self.options}."
-        choice, reason = oracle.choose_one(
+        choice, reason = oracle.choose_one_using_context(
             self.options, query=query, context=INTUITION
         )
         INTUITION("Oracle chose '{choice}' because {reason}.")
@@ -160,7 +163,7 @@ class Checker:
         xyzs = set(POINTS) 
         while xyzs:
             query = f"Choose an (x, y, z) point from {xyzs} to test {op} on."
-            (x, y, z), reason = oracle.choose_one(
+            (x, y, z), reason = oracle.choose_one_using_context(
                 xyzs, query=query, context=INTUITION
             )
             INTUITON(f"Oracle chose ({x}, {y}, {z}) because {reason}.")
@@ -180,7 +183,7 @@ The task: find an operator ⊕ so that all (x, y, z) points in the dataset fit x
 Now in guessing mode.
 Oracle chose '+' because it is a common operator.
 Now in checking mode.
-Oracle chose (2, 4, 8) because it is the most discriminatory example.
+Oracle chose (2, 4, 8) because it is the most informative point.
 Point failed: 2 + 4 != 8.
 Now in guessing mode.
 Oracle chose '*' because 2 * 4 == 8.
@@ -189,7 +192,7 @@ Oracle chose (2, 4, 8) because it failed last time.
 Point passed: 2 * 4 == 8.
 Oracle chose (3, 1, 3) because of no particular reason.
 Point passed: 3 * 1 == 3.
-Oracle chose (2, 2, 4) because it is the last example.
+Oracle chose (2, 2, 4) because it is the final point.
 Point passed: 2 * 2 == 4.
 All points passed.
 ```
