@@ -1,10 +1,10 @@
 ---
 layout: post
 title: why neurosymbolic reasoning will still matter as models improve 
-date: 2026-05-21
+date: 2050-01-01
 description: XXX 
 tags: neurosymbolic-ai automated-reasoning
-categories: mckenzie 
+categories: research 
 ---
 
 (Probably can make this more nuanced: unclear, in a way, whether logical reasoning is necessary for AI systems that are useful to society, or just an approximation of logical reasoning is good enough. Maybe depends on what the threshold for trustworthiness is)
