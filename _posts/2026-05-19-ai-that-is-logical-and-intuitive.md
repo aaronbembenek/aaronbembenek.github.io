@@ -1,24 +1,25 @@
 ---
 layout: post
-title: AI that is logical and intuitive 
+title: AI That Is Logical and Intuitive 
 date: 2026-05-19
-description: introducing my McKenzie Postdoctoral Fellowship project 
+description: Introducing my McKenzie Postdoctoral Fellowship project 
 tags: neurosymbolic-ai automated-reasoning
-categories: mckenzie 
+categories: research
 ---
 
 In July, I will begin a three-year McKenzie Postdoctoral Fellowship, which will allow me to pursue an independent research project at The University of Melbourne.
-I figured I'd write a series of blog posts documenting my progress on this project.
+This is the first in a series of blog posts documenting my progress on this project.
 
 The goal of my project is to develop the foundations for advanced AI systems that are both *logical* and *intuitive*.
-The ability to reason in a logically correct way is a fundamental requirement for trustworthy AI with genuine problem-solving skills: AI systems will be most useful if they draw correct conclusions from assumptions, satisfy situational constraints, and generally be logically consistent.
+The ability to reason in a logically correct way strikes me as a key desideratum for future AI systems, both from the perspective of AI safety---we want to be able to trust the "thought process" of AI systems---and from a capability perspective, since certain tasks require logical reasoning.
+After all, it seems reasonable to expect a superintelligent machine to draw correct conclusions from assumptions, satisfy situational constraints, and generally be logically consistent.
 At the same time, AI systems that are purely logical are inefficient (since they cannot use intuition to reach solutions quickly) and hard to use (since they cannot explain themselves in an intuitive way).
 No current AI systems combine logic and intuition in a way that takes full advantage of these complementary modalities---a gap my project aims to address.
 
 In this post, I will lay out the context and motivation of my project, as well as its key insight.
 In later posts, I will explain how this insight can be leveraged to build logical and intuitive AI systems.
 
-#### Automated reasoning and symbolic AI
+#### Automated Reasoning and Symbolic AI
 
 While AI can be used for many tasks, my project focuses on *automated reasoning*---using computers to solve logical problems.
 These problems are unambiguous, in that a candidate solution for a problem can be verified in a mechanical way (what is "correct" is not up to someone's interpretation).
@@ -31,30 +32,60 @@ At certain points in the reasoning process, the only way for the AI system to ma
 The ability of an automated reasoning tool to find a solution efficiently (or at all) often depends on the quality of the working assumptions it makes during search.
 
 Traditionally, automated reasoning tools have been built using *symbolic AI*, where computation consists of systematically applying rules.
-To make this more concrete, we can imagine that we have the following three rules:
+To make this more concrete, we can imagine that we have the following twelve rules:
 
-1. Every person is mortal.
-2. Every horse is mortal.
-3. Socrates is a person.
+1. Every mammal is mortal.
+1. Every reptile is mortal.
+1. Every bird is mortal.
+1. Every horse is a mammal.
+1. Every dog is a mammal.
+1. Every person is a mammal.
+1. Every snake is a reptile.
+1. Every lizzard is a reptile.
+1. Every songbird is a bird.
+1. Every raptor is a bird.
+1. Every penguin is a bird.
+1. Socrates is a person.
 
 Given the task of proving "Socrates is mortal", a symbolic AI system would search for a proof of this proposition, using these rules to establish evidence.
-Say the AI system starts its search by applying the first rule; its next proof obligation is to prove the proposition "Socrates is a person".
-This fact is established directly in the third rule.
-So, the first and third rules taken together constitute a proof that "Socrates is mortal".
+The trace of the AI system might look something like this (indenting representing the search stage):
+
+- I need to prove that Socrates is mortal.
+- To do so, I need to select a rule that defines "mortal".
+- I chose Rule #1: Every mammal is mortal. Now, I need to prove Socrates is a mammal.
+- To do so, I need to select a rule that defines "mammal".
+- I chose Rule #6: Every person is mortal. Now, I need to prove that Socrates is a person.
+- To do so, I need to select a rule that defines "person".
+- I chose Rule #12: Socrates is a person. This establishes the fact we need.
+- Search complete.
+
+So, the system is able to prove that Socrates is mortal by combining Rules #1, #6, and #12.
 As we can see here, symbolic AI has the advantage that it is trustworthy: we know that the reasoning process is logically correct, up to the correctness of the rules.
 
 However, symbolic AI has two shortcomings that has limited its impact in practice.[^1]
 
 First, it often fails to scale to automated reasoning problems with large search spaces, as it cannot use intuition to more efficiently guide its search for a solution.
-In our example, a symbolic AI system might try to prove that Socrates is mortal by using the second rule, which would then require it to establish that "Socrates is a horse"; needless to say, this would lead to a dead end, and the AI system would have to start again.
-A human familiar with Greek philosophy would not fall into this trap: they have prior knowledge that the historical Socrates was a person, not a horse, and so would be suspicious that the second rule would be useful for proving Socrates' mortality.
-Unfortunately, in contrast, a symbolic AI system is just as likely to explore the wrong path as the right one---after all, in the purely logical world of symbolic AI, terms like "person", "mortal", "horse", and "Socrates" are just formal symbols with no connection to real-world phenomena.
+In our example, a symbolic AI system might try to prove that Socrates is mortal by showing that he is a bird, leading to a dead end, and forcing the system to backtrack:
+
+- I need to prove that Socrates is mortal.
+- To do so, I need to select a rule that defines "mortal".
+- I chose Rule #3: Every bird is mortal. Now, I need to prove Socrates is a bird.
+- To do so, I need to select a rule that defines "bird".
+- I chose Rule #11: Every penguin is a bird. Now, I need to prove that Socrates is a penguin.
+- To do so, I need to select a rule that defines "penguin".
+- Dead end: no rule defines penguin. Backtracking...
+- I need to select another rule that defines "bird".
+- I chose Rule #10: Every raptor is a bird. Now, I need to prove that Socrates is a raptor.
+- ...
+
+A human familiar with Greek philosophy would not fall into this trap: they have prior knowledge that the historical Socrates was a person, not a bird (of any type), and so would be suspicious that Rule #3 would be useful for proving Socrates' mortality.
+Unfortunately, in contrast, a symbolic AI system does not have the same intuition---after all, in the purely logical world of symbolic AI, terms like "person", "mortal", "penguin", and "Socrates" are just formal symbols with no connection to real-world phenomena.
 That is, a symbolic AI system has no access to the external meanings of these terms, and thus the terms do not provide any information that can be used to guide search.
 
 Second, symbolic AI is difficult to use, as pure logic is hard to understand (at least for most people, myself included), and symbolic AI tools are incapable of explaining their reasoning in an intuitive way.
 Our Socrates example is small and simple enough that this problem does not manifest, but one could imagine that it becomes tricky for humans to follow the logic---and map it back to the real world---as systems grow to thousands of rules and proofs become commensurately more complex.
 
-#### Neurosymbolic AI for automated reasoning
+#### Neurosymbolic AI for Automated Reasoning
 
 To address these limitations, researchers have become interested in building automated reasoning systems based on *neurosymbolic AI*---a hybrid paradigm where symbolic AI is combined with neural networks, such as large language models (LLMs).
 Whereas symbolic AI makes logical inferences based on rules, neural networks make statistical inferences based on learned patterns; these learned patterns can simulate intuition.
@@ -93,7 +124,7 @@ Moreover, the checker cannot give any intuition when it produces a counterexampl
 These limitations are inherent in our current (slightly Frankenstein-esque) approach of bolting together symbolic components and neural networks in sequence.
 My project asks how we can integrate symbolic components and neural networks in a deeper, principled way that will enable us to build more powerful neurosymbolic automated reasoning systems.
 
-#### My insight: intuition and logic should evolve in parallel
+#### My Insight: Intuition and Logic Should Evolve in Parallel
 
 In current conceptualizations, logical computation (through symbolic components) and computation over "intuition" (through neural networks) happen in sequence.
 My insight is that, instead, logical computation and computation over intuition should happen *in parallel*.
@@ -136,5 +167,5 @@ In later posts, I will show how this example is one instance of a general techni
 
 <hr>
 
-[^1]: There is a third shortcoming worth mentioning: where do the rules come from? I am going to ignore this for now, as there are plenty of automated reasoning tasks for which we already have rules (e.g., manually designed algorithms); however, perhaps I will address this point in a future blog post on program synthesis.
+[^1]: There is a third shortcoming worth mentioning: where do the rules come from? I am going to ignore this for now, as there are plenty of automated reasoning tasks for which we already have rules (e.g., manually designed algorithms); however, perhaps I will address how to discover new rules in a future blog post on program synthesis.
 [^2]: I'll note too that this sequential linking of neural networks and symbolic components is essentially what happens in agentic frameworks, where an AI agent (the neural network) calls out to external tools (symbolic code).
