@@ -1,13 +1,13 @@
 ---
 layout: post
 title: Building a Simple Parallel Neurosymbolic Reasoner 
-date: 2026-05-20
+date: 2026-05-27
 description: A concrete example of the parallel neurosymbolic architecture 
 tags: neurosymbolic-ai automated-reasoning
 categories: research 
 ---
 
-In my previous post, I introduced and motivated my McKenzie Postdoctoral Fellowship, which is all about designing AI systems where logic and intuition evolve in parallel.
+In my [previous post]({% post_url 2026-05-27-ai-that-is-logical-and-intuitive %}), I introduced and motivated my McKenzie Postdoctoral Fellowship, which is all about designing AI systems where logic and intuition evolve in parallel.
 I know that this is a little abstract, and so in this blog post I will make things more concrete by walking through an example of building a simple parallel neurosymoblic reasoner.
 I hope you come away with the impression that, far from being exotic, parallel neurosymbolic computation is actually quite natural.
 
