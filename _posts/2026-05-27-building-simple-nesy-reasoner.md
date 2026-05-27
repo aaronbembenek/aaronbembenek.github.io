@@ -8,7 +8,7 @@ categories: research
 ---
 
 In my [previous post]({% post_url 2026-05-27-ai-that-is-logical-and-intuitive %}), I introduced and motivated my McKenzie Postdoctoral Fellowship, which is all about designing AI systems where logic and intuition evolve in parallel.
-I know that this is a little abstract, and so in this blog post I will make things more concrete by walking through an example of building a simple parallel neurosymoblic reasoner.
+I know that this is a little abstract, and so in this blog post I will make things more concrete by walking through an example of building a simple parallel neurosymbolic reasoner.
 I hope you come away with the impression that, far from being exotic, parallel neurosymbolic computation is actually quite natural.
 
 As a reminder of the parallel neurosymbolic architecture, we will essentially be trying to create a system that looks like this:
@@ -115,7 +115,7 @@ class Checker:
 
 The checker has a few properties worth noting.
 It never checks any point more than once (per invocation), and thus always terminates.
-If it returns true, then the operator fits all points; if it returns false, then the operator has failed on a point.
+If it returns `True`, then the operator fits all points; if it returns `False`, then the operator has failed on a point.
 Moreover, the checker tries the data points in a non-deterministic order (thanks to the call to `oracle.choose_one_randomly`).
 
 ##### The Guess-and-Check Loop
@@ -141,7 +141,7 @@ Given what we know about the guesser and the checker, we have some strong guaran
 - if it returns the string `"FAIL"`, then none of the available operators fits all points.
 
 On the other hand, there are some obvious limitations here, the main one being that the guesser receives only very coarse-grained feedback from the checker: whether the current guess is correct or not (which is conveyed implicitly in the loop).
-No feedback is exchanged about which points have succeeded and which point has failed, and thus no information is passed to the guesser that might help guide its search.
+No feedback is exchanged about which points have succeeded and which points have failed, and thus no information is passed to the guesser that might help guide its search.
 In the current case, this is okay, since the guesser just guesses randomly anyway; however, something is clearly being left on the table here.
 
 #### The Parallel Neurosymbolic Solver
@@ -180,7 +180,7 @@ Trace:"""
 )
 ```
 
-However, the initial intuition could also include richer information.
+For a more realistic automated reasoning task, the initial intuition could include richer context.
 For example, if the goal were to find an invariant over variables `x`, `y`, and `z` for a particular loop from a program, the initial intuition might look more like this:
 
 ```python
@@ -219,20 +219,20 @@ class Guesser:
         choice, reason = oracle.choose_one_using_context(
             self.options, query=query, context=str(INTUITION)
         )
-        INTUITION("Guesser chose '{choice}' because {reason}.")
+        INTUITION(f"Guesser chose '{choice}' because {reason}.")
         self.options.remove(choice)
         return choice
 ```
 
 A few things to note.
-First, intuition is updated to reflect that the overall system is in guessing mode, and then that either 1) all operators have already been guessed or 2) the guesser has chosen an operator for some particular reason.
+First, intuition is updated to reflect that the overall system is in guessing mode, and then either that all operators have already been guessed, or which operator was chosen and why.
 Second, the oracle now makes a decision with respect to a particular query and context.
 This could be implemented many ways, but for the sake of concreteness, we can imagine that the oracle makes its choice using an LLM:
 
 ```python
 # oracle module
 
-def choose_one_using_context(xs: set, query: str, context: str) -> Any * str:
+def choose_one_using_context(xs: set, query: str, context: str) -> tuple[Any, str]:
     prompt = f"Context:\n{context}\n\nQuery:\n{query}\n\n"
     prompt += "Respond with your answer in <solution> tags and your reason in <reason> tags."
     response = query_llm(prompt)
@@ -253,7 +253,7 @@ class Checker:
             (x, y, z), reason = oracle.choose_one_using_context(
                 xyzs, query=query, context=str(INTUITION)
             )
-            INTUITON(f"Checker chose ({x}, {y}, {z}) because {reason}.")
+            INTUITION(f"Checker chose ({x}, {y}, {z}) because {reason}.")
             xyzs.remove((x, y, z))
             if not eval(f"{x} {op} {y} == {z}"):
                 INTUITION(f"Point failed: {x} {op} {y} != {z}.")
@@ -314,8 +314,9 @@ Choose an operator from {-, *, /}.
 Respond with your answer in <solution> tags and your reason in <reason> tags.
 ```
 
-Given the counterexample point (2, 4, 8), the LLM will (hopefully) guess the operator $\times$, as multiplication is the one operator that fits the equation $2 \oplus 4 = 8$.
-Note that the counterexample point exists only in the intuition state; symbolically speaking, the checker still returns only a boolean result.
+Given the counterexample point (2, 4, 8), the LLM should guess the operator $\times$, as multiplication is the one operator that fits the equation $2 \oplus 4 = 8$.
+Note that the counterexample exists only in the intuition state; symbolically speaking, the checker still returns only a boolean result.
+The LLM gains access to the counterexample through the intuition context, without any change to the symbolic interface between guesser and checker.
 Indeed, the underlying symbolic structure of the guess-and-check loop has not changed at all.
 This is key, as it means that we still retain the guarantees of the symbolic solver (such as termination).
 
@@ -339,3 +340,4 @@ Neat, right?
 I've begun to formalize this recipe through the abstraction of *Neurosymbolic Transition Systems*, which I proposed in a [paper](https://arxiv.org/abs/2507.05886) that I presented at the 2025 International Workshop on Language Models and Programming Languages.
 I'll dig deeper into Neurosymbolic Transition Systems in a future post.
 I'm quite excited about this formalism, as I believe that it can be the foundation not only of individual automated reasoning tools, but also of *entire neurosymbolic programming languages.*
+But, we'll come to that in due time, in a future post. ☺️ 
