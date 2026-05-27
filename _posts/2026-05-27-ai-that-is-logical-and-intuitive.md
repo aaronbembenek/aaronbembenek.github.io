@@ -94,7 +94,8 @@ On the other hand, neural networks like LLMs are not guaranteed to act logically
 
 The hope is that neurosymbolic AI will enable automated reasoning systems that use "intuition" while staying logically correct---that is, to combine the advantages of neural networks and symbolic AI.
 How to actually combine symbolic AI and neural networks to achieve the full potential of this combination remains an open question.
-Indeed, I believe that our current approach to structuring neurosymbolic AI systems is limiting the impact this exciting paradigm can have on automated reasoning.
+Indeed, I believe that our current approach to structuring neurosymbolic AI systems limits the impact this exciting paradigm can have on automated reasoning---and, in turn, the potential benefits that automated reasoning can offer society.
+Now is the time for foundational work in this area!
 
 Currently, neurosymbolic automated reasoning systems are conceptualized as consisting of multiple components chained together *in sequence*, where some components are symbolic, and some are neural networks (typically an LLM).
 This sequential linking of neural networks and symbolic components is essentially what happens in agentic frameworks, where an AI agent (the neural network) passes control to external tools (symbolic code) that run and then return control back to the agent.
