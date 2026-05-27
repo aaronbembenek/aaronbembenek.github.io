@@ -13,7 +13,7 @@ This is the first in a series of blog posts documenting my progress on this proj
 The goal of my project is to develop the foundations for advanced AI systems that are both *logical* and *intuitive*.
 The ability to reason in a logically correct way strikes me as a key desideratum for future AI systems, both from the perspective of AI safety---we want to be able to trust the "thought process" of AI systems---and from a capability perspective, since certain tasks require logical reasoning.
 After all, it seems reasonable to expect a superintelligent machine to draw correct conclusions from assumptions, satisfy situational constraints, and generally be logically consistent.
-At the same time, AI systems that are purely logical are inefficient (since they cannot use intuition to reach solutions quickly) and hard to use (since they cannot explain themselves in an intuitive way).
+At the same time, AI systems that are purely logical are inefficient (since they cannot use intuition to reach solutions quickly) and hard to interact with (since they cannot explain themselves to users in an intuitive way).
 No current AI systems combine logic and intuition in a way that takes full advantage of these complementary modalities---a gap my project aims to address.
 
 In this post, I will lay out the context and motivation of my project, as well as its key insight.
@@ -41,7 +41,7 @@ To make this more concrete, we can imagine that we have the following twelve rul
 1. Every dog is a mammal.
 1. Every person is a mammal.
 1. Every snake is a reptile.
-1. Every lizzard is a reptile.
+1. Every lizard is a reptile.
 1. Every songbird is a bird.
 1. Every raptor is a bird.
 1. Every penguin is a bird.
@@ -54,7 +54,7 @@ The trace of the AI system might look something like this:
 - To do so, I need to select a rule that defines "mortal".
 - I chose Rule #1: Every mammal is mortal. Now, I need to prove Socrates is a mammal.
 - To do so, I need to select a rule that defines "mammal".
-- I chose Rule #6: Every person is mortal. Now, I need to prove that Socrates is a person.
+- I chose Rule #6: Every person is a mammal. Now, I need to prove that Socrates is a person.
 - To do so, I need to select a rule that defines "person".
 - I chose Rule #12: Socrates is a person. This establishes the fact we need.
 - Search complete.
@@ -62,7 +62,7 @@ The trace of the AI system might look something like this:
 So, the system is able to prove that Socrates is mortal by combining Rules #1, #6, and #12.
 As we can see here, symbolic AI has the advantage that it is trustworthy: we know that the reasoning process is logically correct, up to the correctness of the rules.
 
-However, symbolic AI has two shortcomings that has limited its impact in practice.[^1]
+However, symbolic AI has two shortcomings that have limited its impact in practice.[^1]
 
 First, it often fails to scale to automated reasoning problems with large search spaces, as it cannot use intuition to more efficiently guide its search for a solution.
 In our example, a symbolic AI system might try to prove that Socrates is mortal by showing that he is a bird, leading to a dead end, and forcing the system to backtrack:
@@ -93,10 +93,11 @@ Indeed, it often appears that an LLM is acting with some form of intuition when 
 On the other hand, neural networks like LLMs are not guaranteed to act logically (not even in "reasoning" modes), and thus neural networks and LLMs are untrustworthy.
 
 The hope is that neurosymbolic AI will enable automated reasoning systems that use "intuition" while staying logically correct---that is, to combine the advantages of neural networks and symbolic AI.
-It is an open question about how to actually combine symbolic AI and neural networks to achieve the full potential of this combination.
+How to actually combine symbolic AI and neural networks to achieve the full potential of this combination remains an open question.
 Indeed, I believe that our current approach to structuring neurosymbolic AI systems is limiting the impact this exciting paradigm can have on automated reasoning.
 
-Currently, neurosymbolic automated reasoning systems are conceptualized as consisting of multiple components chained together *in sequence*, where some components are symbolic, and some are neural networks (typically an LLM).[^2]
+Currently, neurosymbolic automated reasoning systems are conceptualized as consisting of multiple components chained together *in sequence*, where some components are symbolic, and some are neural networks (typically an LLM).
+This sequential linking of neural networks and symbolic components is essentially what happens in agentic frameworks, where an AI agent (the neural network) passes control to external tools (symbolic code) that run and then return control back to the agent.
 A classic example is the guess-and-check loop, where the LLM plays the role of the "guesser", and the symbolic component plays the role of the "checker".
 The LLM guesses a candidate solution to a problem; the symbolic component checks if it is actually a solution; if not, the symbolic component passes a counterexample to the LLM (demonstrating why the candidate is not a solution), and the LLM guesses again.
 The idea is that, as the counterexamples accumulate, the guesser will be led to a solution.
@@ -110,15 +111,13 @@ The idea is that, as the counterexamples accumulate, the guesser will be led to 
 
 There are two limitations that are fundamental to an architecture like this, where computation flows through neural networks and symbolic components *in sequence.*
 
-First, the guesser, being purely neural, does not have any of the advantages of symbolic AI.
-An advantage of symbolic AI is that it is trustworthy: we can have definite guarantees about its behavior.
-Here, we have no guarantees about the behavior of the guesser: we cannot be sure that it will produce candidate solutions that respect the counterexamples it has been given, and thus that it will actually make progress in searching the solution space.
-These types of guarantees are standard for symbolic algorithms, but very hard to establish even for small neural networks, let alone frontier language models.
-In principle, the LLM might guess the same wrong answers repeatedly, meaning that the guess-and-check loop never makes progress.
+First, the guesser, being purely neural, comes with no guarantees about its behavior.
+In particular, there is no guarantee that it will produce candidate solutions that respect the counterexamples it has been given---meaning that, in principle, the LLM might guess the same wrong answers repeatedly, and the loop never makes progress.
+Such guarantees are standard for symbolic algorithms, but very hard to establish even for small neural networks, let alone frontier language models.
 
-Second, the checker, being purely symbolic, does not have any of the advantages of neural networks, which would allow it to operate with "intuition". 
+Second, the checker, being purely symbolic, does not have any of the advantages of neural networks, which would allow it to operate with "intuition".
 For one, it cannot ingest intuition for the candidate solution it receives.
-This is a loss: if the checker had access to the intuition behind a guess, the checker could produce a counterexample that more effectively addresses why that intuition is incorrect. 
+This is a loss: if the checker had access to the intuition behind a guess, the checker could produce a counterexample that more effectively addresses why that intuition is incorrect.
 Moreover, the checker cannot give any intuition when it produces a counterexample; such intuition might help the guesser better understand how the counterexample works, leading to a better subsequent guess.
 
 These limitations are inherent in our current (slightly Frankenstein-esque) approach of bolting together symbolic components and neural networks in sequence.
@@ -127,11 +126,14 @@ My project asks how we can integrate symbolic components and neural networks in 
 #### My Insight: Intuition and Logic Should Evolve in Parallel
 
 In current conceptualizations, logical computation (through symbolic components) and computation over "intuition" (through neural networks) happen in sequence.
-My insight is that, instead, logical computation and computation over intuition should happen *in parallel*.
-In this framing, the input to a neurosymbolic computation is logical data (the problem to be solved) equipped with intuition about that data (e.g., what that problem represents in the real world).
-During the neurosymbolic computation, the logical and intuitive facets of the computation's state evolve in parallel: the logical part evolves through symbolic rules (guaranteeing the overall computation is trustworthy), while each logical step is mirrored by a corresponding transformation over intuition.
-When search reaches a decision point, the accumulated intuition can be used to guide logical reasoning toward the most likely path.
-The output of the neurosymbolic computation is then logical data (the solution to the problem, as determined by the symbolic rules) equipped with intuition about that data (the intuition accumulated during computation).
+My insight is that, instead, these two types of computation should happen *in parallel.*
+In this framing, every piece of data simultaneously has a logical facet and an intuitive facet: an automated reasoning problem, for instance, is both a formal logical object and something that represents a real-world situation.
+
+During a parallel neurosymbolic computation, the logical and intuitive facets of the computation's state evolve in lockstep.
+The logical part evolves through symbolic rules, guaranteeing the overall computation is trustworthy.
+Each logical step is mirrored by a corresponding update to the intuition state, forming a running summary of the reasoning so far.
+When search reaches a decision point, this accumulated intuition can be used to guide logical reasoning toward the most likely path.
+The output is then a solution, determined by the symbolic rules, together with the intuition built up over the course of the computation.
 
 {% include figure.liquid
    path="assets/img/parallel_nesy.svg"
@@ -162,11 +164,12 @@ Building on this core insight, my fellowship project has three aims:
 
 In my [next post]({% post_url 2026-05-27-building-simple-nesy-reasoner %}), I will walk through how to build a simple reasoning system that performs parallel neurosymbolic computation, and foreshadow a general recipe for taking a symbolic algorithm and making it neurosymbolic.
 
-#### Most Importantly...
+#### Most Importantly: I'm Looking for Collaborators!
 
-**I am looking for collaborators, so if this work interests you, please get in touch!**
+I'm particularly interested in collaborating with folks who believe that they have an automated reasoning problem that might be a good use case for parallel neurosymbolic reasoning, as well as experts in neural networks who would be interested in exploring whether parallel neurosymbolic components could be embedded within neural architectures.
+
+**If this sounds interesting to you, please get in touch!**
 
 <hr>
 
 [^1]: There is a third shortcoming worth mentioning: where do the rules come from? I am going to ignore this for now, as there are plenty of automated reasoning tasks for which we already have rules (e.g., manually designed algorithms); however, perhaps I will address how to discover new rules in a future blog post on program synthesis.
-[^2]: I'll note too that this sequential linking of neural networks and symbolic components is essentially what happens in agentic frameworks, where an AI agent (the neural network) calls out to external tools (symbolic code).
