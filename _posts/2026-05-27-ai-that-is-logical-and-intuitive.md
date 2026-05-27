@@ -128,7 +128,7 @@ My project asks how we can integrate symbolic components and neural networks in 
 
 In current conceptualizations, logical computation (through symbolic components) and computation over "intuition" (through neural networks) happen in sequence.
 My insight is that, instead, these two types of computation should happen *in parallel.*
-In this framing, every piece of data simultaneously has a logical facet and an intuitive facet: an automated reasoning problem, for instance, is both a formal logical object and something that represents a real-world situation.
+In this framing, every piece of data simultaneously has a logical facet and an intuitive facet: an automated reasoning problem, for instance, is both a formal logical object and something that represents some external phenomenon (e.g., a real-world situation).
 
 During a parallel neurosymbolic computation, the logical and intuitive facets of the computation's state evolve in lockstep.
 The logical part evolves through symbolic rules, guaranteeing the overall computation is trustworthy.
