@@ -30,7 +30,29 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/service/";
           },
-        },{id: "projects-formulog",
+        },{id: "post-building-a-simple-parallel-neurosymbolic-reasoner",
+        
+          title: "Building a Simple Parallel Neurosymbolic Reasoner",
+        
+        description: "A concrete example of the parallel neurosymbolic architecture",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/building-simple-nesy-reasoner/";
+          
+        },
+      },{id: "post-ai-that-is-simultaneously-logical-and-intuitive",
+        
+          title: "AI That Is Simultaneously Logical and Intuitive",
+        
+        description: "Introducing the parallel neurosymbolic architecture",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-that-is-logical-and-intuitive/";
+          
+        },
+      },{id: "projects-formulog",
           title: 'Formulog',
           description: "Datalog + SMT + FP for writing SMT-based static analyses",
           section: "Projects",handler: () => {
