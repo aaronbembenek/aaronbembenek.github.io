@@ -1,7 +1,7 @@
 ---
 layout: post
 title: AI That Is Simultaneously Logical and Intuitive 
-date: 2026-05-19
+date: 2026-05-27
 description: Introducing the parallel neurosymbolic architecture 
 tags: neurosymbolic-ai automated-reasoning
 categories: research
@@ -160,7 +160,7 @@ Building on this core insight, my fellowship project has three aims:
 2. To implement a neurosymbolic programming language that reifies this theoretical model; and
 3. To use the programming language to build cutting-edge, neurosymbolic automated reasoning systems.
 
-In my next post, I will walk through how to build a simple reasoning system that performs parallel neurosymbolic computation, and foreshadow a general recipe for taking a symbolic algorithm and making it neurosymbolic.
+In my [next post]({% post_url 2026-05-27-building-simple-nesy-reasoner %}), I will walk through how to build a simple reasoning system that performs parallel neurosymbolic computation, and foreshadow a general recipe for taking a symbolic algorithm and making it neurosymbolic.
 
 #### Most Importantly...
 
