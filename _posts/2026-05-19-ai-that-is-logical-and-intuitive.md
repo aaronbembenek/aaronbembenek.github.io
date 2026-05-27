@@ -92,7 +92,7 @@ Whereas symbolic AI makes logical inferences based on rules, neural networks mak
 Indeed, it often appears that an LLM is acting with some form of intuition when we ask it to solve a task.
 On the other hand, neural networks like LLMs are not guaranteed to act logically (not even in "reasoning" modes), and thus neural networks and LLMs are untrustworthy.
 
-The hope is that neurosymbolic AI will enable automated reasoning systems that use "intuition" while staying logically correct---that is, that combine the advantages of neural networks and symbolic AI.
+The hope is that neurosymbolic AI will enable automated reasoning systems that use "intuition" while staying logically correct---that is, to combine the advantages of neural networks and symbolic AI.
 It is an open question about how to actually combine symbolic AI and neural networks to achieve the full potential of this combination.
 Indeed, I believe that our current approach to structuring neurosymbolic AI systems is limiting the impact this exciting paradigm can have on automated reasoning.
 
@@ -108,7 +108,7 @@ The idea is that, as the counterexamples accumulate, the guesser will be led to 
    width="50%"
    class="mx-auto d-block" %}
 
-There are two limitations that are fundamental to an architecture like this, where computation flows through neural networks and symbolic components in sequence.
+There are two limitations that are fundamental to an architecture like this, where computation flows through neural networks and symbolic components *in sequence.*
 
 First, the guesser, being purely neural, does not have any of the advantages of symbolic AI.
 An advantage of symbolic AI is that it is trustworthy: we can have definite guarantees about its behavior.

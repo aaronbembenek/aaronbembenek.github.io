@@ -9,6 +9,7 @@ categories: research
 
 In my previous post, I introduced and motivated my McKenzie Postdoctoral Fellowship, which is all about designing AI systems where logic and intuition evolve in parallel.
 I know that this is a little abstract, and so in this blog post I will make things more concrete by walking through an example of building a simple parallel neurosymoblic reasoner.
+I hope you come away with the impression that, far from being exotic, parallel neurosymbolic computation is actually quite natural.
 
 As a reminder of the parallel neurosymbolic architecture, we will essentially be trying to create a system that looks like this:
 
@@ -21,16 +22,18 @@ As a reminder of the parallel neurosymbolic architecture, we will essentially be
 
 The approach we'll take is largely mechanical.
 First, we'll define a symbolic solver for the particular problem we're targeting.
-Then, we'll define a domain of "intuition" and the initial intuition for the problem, update the symbolic solver to produce intuition every time it takes a logical step, and use intuition when it has to make a decision.
+Then, we'll define a domain of "intuition" and the initial intuition for the problem.
+Finally, we'll update the symbolic solver to produce intuition every time it takes a logical step, and use intuition when it has to make a decision.
 
 At the end of this post, I'll foreshadow how the technique used in this example is a general recipe for building parallel neurosymbolic reasoning systems.
+This recipe will be the subject of future blog posts.
 
 #### An Example Problem: Fitting 3D Data Points 
 
 Let's consider a simple task involving two components: a guesser guesses an arithmetic operator $\oplus$, and a checker checks whether the equation $x \oplus y = z$ holds for all 3D data points in a dataset that is known to the checker, but not the guesser.
 
-For simplicity, we'll assume that the guesser is guessing from these operators: $+,-,\times,/$ (addition, subtraction, multiplication, and division).
-Assume the checker is fitting the guessed operator against this set of three 3D data points:
+For simplicity, we'll assume that the guesser is guessing from these four operators: $+,-,\times,/$ (addition, subtraction, multiplication, and division).
+Let's say that the checker is matching the guessed operator against this set of three 3D data points:
 
 | x | y | z |
 |-----|-----|-----|
@@ -58,6 +61,7 @@ For now, we will use a function that returns a random choice (we will use a more
 
 ```python
 # oracle module
+
 import random
 
 def choose_one_randomly(xs: set) -> Any:
@@ -110,9 +114,9 @@ class Checker:
 ```
 
 The checker has a few properties worth noting.
-It never checks any example more than once (per invocation), and thus always terminates.
+It never checks any point more than once (per invocation), and thus always terminates.
 If it returns true, then the operator fits all points; if it returns false, then the operator has failed on a point.
-Moreover, the checker tries the data points in a non-deterministic order (thanks to the call to `oracle.choose_one`).
+Moreover, the checker tries the data points in a non-deterministic order (thanks to the call to `oracle.choose_one_randomly`).
 
 ##### The Guess-and-Check Loop
 
@@ -134,10 +138,11 @@ Given what we know about the guesser and the checker, we have some strong guaran
 
 - It always terminates;
 - if it returns an operator, then that operator genuinely fits all points; and
-- if it returns the string "FAIL", then none of the available operators fits all points.
+- if it returns the string `"FAIL"`, then none of the available operators fits all points.
 
-On the other hand, there are some obvious limitations here, the main one being that the guesser receives only very coarse-grained feedback from the checker: whether the current guess is correct or not.
-No information is passed to it about, say, which point has actually failed.
+On the other hand, there are some obvious limitations here, the main one being that the guesser receives only very coarse-grained feedback from the checker: whether the current guess is correct or not (which is conveyed implicitly in the loop).
+No feedback is exchanged about which points have succeeded and which point has failed, and thus no information is passed to the guesser that might help guide its search.
+In the current case, this is okay, since the guesser just guesses randomly anyway; however, something is clearly being left on the table here.
 
 #### The Parallel Neurosymbolic Solver
 
