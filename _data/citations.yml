@@ -1,8 +1,8 @@
 metadata:
-  last_updated: '2026-06-05'
+  last_updated: '2026-06-10'
 papers:
   Ql2u7VoAAAAJ:2osOgNQ5qMEC:
-    citations: 430
+    citations: 432
     title: 'Differential Privacy: A Primer for a Non-Technical Audience'
     year: '2018'
   Ql2u7VoAAAAJ:9yKSN-GCB0IC:
@@ -10,7 +10,7 @@ papers:
     title: 'FormuLog: Datalog for static analysis involving logical formulae'
     year: '2018'
   Ql2u7VoAAAAJ:IjCSPb-OGe4C:
-    citations: 46
+    citations: 47
     title: 'Formulog: Datalog for SMT-based static analysis'
     year: '2020'
   Ql2u7VoAAAAJ:LkGwnXOMwfcC:
@@ -54,7 +54,7 @@ papers:
     title: Bridging the gap between computer science and legal approaches to privacy
     year: '2017'
   Ql2u7VoAAAAJ:ufrVoPGSRksC:
-    citations: 4
+    citations: 5
     title: 'Making Formulog Fast: An Argument for Unconventional Datalog Evaluation'
     year: '2024'
   Ql2u7VoAAAAJ:zYLM7Y9cAGgC:
