@@ -17,6 +17,7 @@ nav_order: 4
 
 ## Journal Reviewing
 
+- ACM Transactions on Software Engineering and Methodology (TOSEM 2026)
 - Journal of Artificial Intelligence Research (JAIR 2025, 2026)
 - IEEE Transactions on Software Engineering (TSE 2023, 2024)
 
