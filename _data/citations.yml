@@ -1,8 +1,8 @@
 metadata:
-  last_updated: '2026-07-20'
+  last_updated: '2026-08-07'
 papers:
   Ql2u7VoAAAAJ:2osOgNQ5qMEC:
-    citations: 440
+    citations: 435
     title: 'Differential Privacy: A Primer for a Non-Technical Audience'
     year: '2018'
   Ql2u7VoAAAAJ:9yKSN-GCB0IC:
@@ -10,23 +10,23 @@ papers:
     title: 'FormuLog: Datalog for static analysis involving logical formulae'
     year: '2018'
   Ql2u7VoAAAAJ:IjCSPb-OGe4C:
-    citations: 47
+    citations: 49
     title: 'Formulog: Datalog for SMT-based static analysis'
     year: '2020'
   Ql2u7VoAAAAJ:LkGwnXOMwfcC:
-    citations: 0
+    citations: 1
     title: Bit-Vector CHC Solving for Binary Analysis and Binary Analysis for Bit-Vector CHC Solving
     year: '2026'
   Ql2u7VoAAAAJ:Tyk-4Ss8FVUC:
-    citations: 5
+    citations: 4
     title: Datalog-Based Systems Can Use Incremental SMT Solving
     year: '2020'
   Ql2u7VoAAAAJ:W7OEmFMy1HYC:
-    citations: 18
+    citations: 17
     title: 'From SMT to ASP: Solver-Based Approaches to Solving Datalog Synthesis-as-Rule-Selection Problems'
     year: '2023'
   Ql2u7VoAAAAJ:WF5omc3nYNoC:
-    citations: 1
+    citations: 0
     title: 'Making Formulog Fast: An Argument for Unconventional Datalog Evaluation (Extended Version)'
     year: '2024'
   Ql2u7VoAAAAJ:Y0pCki6q_DkC:
@@ -50,14 +50,14 @@ papers:
     title: Going Into Greater Depth in the Quest for Hidden Frames
     year: '2019'
   Ql2u7VoAAAAJ:u5HHmVD_uO8C:
-    citations: 119
+    citations: 118
     title: Bridging the gap between computer science and legal approaches to privacy
     year: '2017'
   Ql2u7VoAAAAJ:ufrVoPGSRksC:
-    citations: 5
+    citations: 4
     title: 'Making Formulog Fast: An Argument for Unconventional Datalog Evaluation'
     year: '2024'
   Ql2u7VoAAAAJ:zYLM7Y9cAGgC:
-    citations: 4
+    citations: 0
     title: 'Formulog: Datalog for SMT-Based Static Analysis (Extended Version)'
     year: '2020'
