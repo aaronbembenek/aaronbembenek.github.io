@@ -1,8 +1,8 @@
 metadata:
-  last_updated: '2026-08-12'
+  last_updated: '2026-08-24'
 papers:
   Ql2u7VoAAAAJ:2osOgNQ5qMEC:
-    citations: 438
+    citations: 439
     title: 'Differential Privacy: A Primer for a Non-Technical Audience'
     year: '2018'
   Ql2u7VoAAAAJ:9yKSN-GCB0IC:
@@ -22,7 +22,7 @@ papers:
     title: Datalog-Based Systems Can Use Incremental SMT Solving
     year: '2020'
   Ql2u7VoAAAAJ:W7OEmFMy1HYC:
-    citations: 17
+    citations: 18
     title: 'From SMT to ASP: Solver-Based Approaches to Solving Datalog Synthesis-as-Rule-Selection Problems'
     year: '2023'
   Ql2u7VoAAAAJ:WF5omc3nYNoC:
