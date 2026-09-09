@@ -31,10 +31,8 @@ latest_posts:
 
 I am a computer science postdoc at The University of Melbourne supervised by
 [Toby Murray](https://people.eng.unimelb.edu.au/tobym/).
-I work in the areas of programming languages and automated formal methods, with a
-current focus on automatically proving security properties about binary code.
-I am getting increasingly interested in neurosymbolic reasoning (see my initial work
-on [Neurosymbolic Transition Systems](https://arxiv.org/abs/2507.05886)).
+My current focus is on building a form of AI that is simultaneously logical and intuitive; you can read more about my high-level vision [here]({% post_url 2026-05-27-ai-that-is-logical-and-intuitive %}).
+More generally, I work in the areas of formal methods, programming languages, and neurosymbolic AI.
 
 I earned a PhD in computer science at Harvard University, where I was advised by
 [Stephen Chong](http://people.seas.harvard.edu/~chong/) and was a member of the
