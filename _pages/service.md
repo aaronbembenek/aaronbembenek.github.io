@@ -12,8 +12,8 @@ nav_order: 4
 - International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS 2027)
 - International Workshop on Language Models and Programming Languages (LMPL 2026)
 - International Symposium on Practical Aspects of Declarative Languages (PADL 2026)
-- ACM Conference on Object-Oriented Programming, Systems, Languages, and Applications (OOPSLA 2026)
-- ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI 2025)
+- ACM Conference on Object-Oriented Programming, Systems, Languages, and Applications (OOPSLA 2026) — **Distinguished Reviewer Award**
+- ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI 2025) — **Distinguished Reviewer Award**
 - European Conference on Object-Oriented Programming (ECOOP 2025) — **Distinguished Reviewer Award**
 
 ## Journal Reviewing
