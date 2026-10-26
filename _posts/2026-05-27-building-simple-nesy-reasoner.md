@@ -329,7 +329,7 @@ I hope that you have come away with the impression that there is nothing particu
 Indeed, going from the symbolic solver to the neurosymbolic solver was a largely mechanical process:
 
 - We define a domain of intuition and initial intuition for our problem;
-- we instrument every step the symbolic solver takes to also produce intuition that is added to a running intuition state; and
+- we instrument every step the symbolic solver takes to also produce intuition that is integrated into a running intuition state; and
 - when we make decisions (e.g., via the oracle), we use that running intuition.
 
 The cool thing is that these three steps are in fact the basis of a general recipe for building parallel neurosymbolic systems out of purely symbolic systems.
